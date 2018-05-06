@@ -1,0 +1,19 @@
+; Program   : cetak 16 Karakter
+; Fungsi    : mencetak 16 Buah Karakter dengan Int 21h Services 02
+
+
+org 100h
+
+    Proses:
+        Mov AH, 02h     ;ini sebagai Nilai services
+        Mov DL, 'A'     ;DL simpan karakter 'A' yang pertama
+        Mov CX, 10h     ;ulang cetak
+    Ulang:
+        Int 21h         ;ini untuk mencetak karakter
+        Inc DL          ;counter DL = DL + 1
+        LOOP Ulang      ;untuk melompat ke label ulang
+        
+        Int 20h
+        
+end Proses
+ret
